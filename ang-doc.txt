@@ -1,0 +1,254 @@
+Decorator 
+directives 
+obserable
+promise
+life cycle hook of angular 
+life cycle hook on component 
+angular artchitecture
+which pattern angular using 
+DependNCY Injection
+Lezy loading module +
+Security 
+Pipes
+Interceptor
+
+
+
+Angular - Life cycle hooks
+Component - Life cycle hooks
+NgModule
+Decorator
+Directives
+Pipe
+Interceptor
+Auth Guard
+Service
+Obserable
+Promise
+angular artchitecture
+Lezy Loading 
+app Security
+Depency Injection
+constructor & class
+Synchronous and Asynchronous
+prototype
+Two way Data binding
+how to pass data between 2 components
+Reactive and template driven forms
+Dynamic Routing 
+Resolver
+dom sanitization
+Routing Routing Guard 
+AsyncPipe 
+multicasting 
+HostListener 
+service worker
+zone js
+async/await,
+Change Detection
+How does an Angular application work?
+remove # tag from url
+Modules 
+Explain local reference variables, @ViewChild() and @ContentChild().
+ entryComponents?
+
+What is the difference between pure and impure pipe?
+
+https://github.com/sudheerj/angular-interview-questions
+ https://github.com/learning-zone/angular-interview-questions#q-how-do-components-communicate-with-each-other
+
+
+
+constructor and class   +
+single page application
+
+ Dependency injection is an application design pattern that is implemented by Angular and forms the core concepts of Angular. Dependencies in Angular are services which have a functionality. Various components and directives in an application can need these functionalities of the service. Angular provides a smooth mechanism by which these dependencies are injected into components and directives.
+
+MVC Architecture
+MVC stands for Model-View-Controller. The application data is managed by the Model and View manages the data display. While the controller plays as a connector between the view and model layers. Generally, in MVC architecture, you can split up the app accordingly and write code to connect the same. However, in Angular; developers just need to split up the application into MVC and it does the rest on its own. And it saves a significant amount of coding time.
+
+
+
+Directives
+		Angular templates are dynamic and when these templates are rendered by Angular, it changes the DOM according to the directive fed instructions. Directive is a class which contains metadata attached to the class by the @Directive decorator.
+
+Component 
+		 Component directives are used in main class. They contain the detail of how the component should be processed, instantiated and used at runtime..
+Structural directives
+		Structural directives alters the layout of the DOM by adding, replacing and removing its elements.
+		For example, *ngIf directive, *ngSwitch directive, and *ngFor directive.
+		●	*ngIf Directive: The ngIf allows us to Add/Remove DOM Element.
+		●	*ngSwitch Directive: The *ngSwitch allows us to Add/Remove DOM Element. It is similar to switch statement of C#.
+		●	*ngFor Directive: The *ngFor directive is used to repeat a portion of HTML template once per each item from an iterable list (Collection).
+
+Attribute directives 
+		Attribute directives changes the appearance or behavior of a DOM element and these directives look like regular HTML attributes in templates. For example: ngClass directive, and ngStyle directive etc.
+		●	ngClass Directive: The ngClass directive is used to add or remove CSS classes to an HTML element.
+		●	ngStyle Directive: The ngStyle directive facilitates you to modify the style of an HTML element using the expression. You can also use ngStyle directive to dynamically change the style of your HTML element.
+
+
+ng generate directive highlight
+src/app/highlight.directive.ts,
+
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective {
+   constructor(el: ElementRef) {
+       el.nativeElement.style.backgroundColor = 'yellow';
+    }
+}
+
+
+
+
+
+How Is Dependency Injection (DI) Done in Angular?
+Dependency injection (DI), is an important application design pattern. Angular has its own DI framework, which is typically used in the design of Angular applications to increase their efficiency and modularity.
+
+Dependencies are services or objects that a class needs to perform its function. DI is a coding pattern in which a class asks for dependencies from external sources rather than creating them itself.
+
+In Angular, the DI framework provides declared dependencies to a class when that class is instantiated. This guide explains how DI works in Angular, and how you use it to make your apps flexible, efficient, and robust, as well as testable and maintainable.
+
+ Injectors can be configured in three different ways,
+
+@Injectable() decorator for the service.
+@NgModule for NgModule.
+@Component for the component.
+
+it eginity solution 
+
+
+
+
+
+Promise
+Promises work with asynchronous operations. They either return a single value (i.e the promise resolves) or an error message (i.e the promise rejects).
+
+Another important thing to remember regarding promises is that a request initiated from a promise is not canceled.
+
+Disadvantages of Promise:
+User could not cancel a request to the API.
+User could not retry a failed call.
+As our application gets bigger, promises become hard to manage.
+
+search(term:string) {
+  let promise = new Promise((resolve, reject) => {
+    let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
+    this.http.get(apiURL)
+      .toPromise()
+      .then(
+        res => { // Success
+        this.results = res.json().results;
+        resolve();
+        },
+        msg => { // Error
+        reject(msg);
+        }
+      );
+  });
+  return promise;
+}
+}
+
+
+Observable
+An Observable is an array or a sequence of events over time. It has at least two participants, the creator (the data source) and the subscriber (subscription where data is being consumed). Compared to a promise, an observable can be canceled.
+
+RxJS is all about unifying the ideas of promise callbacks and data flow and making them easier to work with. Observables provide operators, like map, forEach, reduce...similar to an array.
+
+There are also powerful operators like retry(),  reply(), retryWhen(), delay().
+
+25 Year
+Qaulification :- BA MA PGDCA
+
+Shilpi Gupta
+Rajkumar GUpta
+
+
+
+Security
+	Prevent application from Cross-Site Scripting (XSS)
+	Use Route guards when required
+	Implement CSP (Content Security Policies)
+	Do not use DOM’s APIs directly
+	Prevent CSRF (Cross-site request forgery)
+	Prevent Cross-Site Script Inclusion (XSSI)
+	Up-to-date Angular Libraries
+	Use Offline Template Compiler.
+	Validate user submitted data on server-side code
+
+
+
+
+
+	Now, let’s see the difference between Synchronous and Asynchronous Transmission:
+
+S.NO	SYNCHRONOUS TRANSMISSION	ASYNCHRONOUS TRANSMISSION
+1.	In Synchronous transmission, Data is sent in form of blocks or frames.	
+	In asynchronous transmission, Data is sent in form of byte or character.
+2.	Synchronous transmission is fast.	
+	Asynchronous transmission is slow.
+3.	Synchronous transmission is costly.	
+	Asynchronous transmission economical.
+4.	In Synchronous transmission, time interval of transmission is constant.	
+	In asynchronous transmission, time interval of transmission is not constant, it is random.
+5.	In Synchronous transmission, There is no gap present between data.	
+	In asynchronous transmission, There is present gap between data.
+6.	Efficient use of transmission line is done in synchronous transmission.	
+	While in asynchronous transmission, transmission line remains empty during gap in character transmission.
+7.	Synchronous transmission needs precisely synchronized clocks for the information of new bytes.	
+	Asynchronous transmission have no need of synchronized clocks as parity bit is used in this transmission for information of new bytes.
+
+
+
+	The prototype is an object that is associated with every functions and objects by default in JavaScript, where function's prototype property is accessible and modifiable and object's prototype property (aka attribute) is not visible. Every function includes prototype object by default.
+
+
+
+	Constructor		
+		The Constructor is a default method of the class executed when the class is instantiated and makes sure proper field initialization in the classes and subclasses.	
+
+	ngOnInit 
+	 	In Angular 6, ngOnInit is a life cycle hook used to by the program to indicate that the component is successfully created by the Angular.
+
+
+https://medium.com/@madhavmahesh/list-of-all-decorators-available-in-angular-71bdf4ad6976
+
+
+
+Parameter decorators Used for parameters inside class constructors, e.g. @Inject, Optional
+import { Component, Inject } from '@angular/core';
+import { MyService } from './my-service';
+
+@Component({
+    selector: 'my-component',
+    template: '<div>Parameter decorator</div>'
+})
+export class MyComponent {
+    constructor(@Inject(MyService) myService) {
+        console.log(myService); // MyService
+    }
+}
+
+
+
+@Injectable({ // The Injectable decorator is required for dependency injection to work
+  // providedIn option registers the service with a specific NgModule
+  providedIn: 'root',  // This declares the service with the root app (AppModule)
+})
+
+
+The AsyncPipe subscribes to an observable or promise and returns the latest value it has emitted. When a new value is emitted, the pipe marks the component to be checked for changes.
+
+
+Observables are declarative which provide support for passing messages between publishers and subscribers in your application. They are mainly used for event handling, asynchronous programming, and handling multiple values. In this case, you define a function for publishing values, but it is not executed until a consumer subscribes to it. The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
+
+
+
+
+
+
+
