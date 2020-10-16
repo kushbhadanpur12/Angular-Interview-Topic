@@ -1,0 +1,55 @@
+
+
+ 
+Subject         => only upcoming values
+BehaviorSubject => one previous value and upcoming values
+ReplaySubject   => all previous values and upcoming values
+
+Subject example (with RxJS 5 API):
+
+    const subject = new Rx.Subject();
+    subject.next(1);
+    subject.subscribe(x => console.log(x));
+    Console output will be empty
+
+BehaviorSubject example:
+
+  const subject = new Rx.BehaviorSubject(0);
+  subject.next(1);
+  subject.subscribe(x => console.log(x));
+  Console output: 1
+
+
+Data Exchange between Components
+
+`service.ts` import of RxJS BehaviorSubject
+  import { BehaviorSubject } from 'rxjs';
+  BehaviorSubject is a Subject that requires an initial value and emits its current value to new subscribers.
+
+  Declare a variable before the constructor that instantiates BehaviorSubject with object data. Also, a variable that converts BehaviorSubject as Observable.
+
+private dataSource = new BehaviorSubject({name: 'Maradona'});
+currentData = this.dataSource.asObservable();
+
+Add a function to change the data of BehaviorSubject.
+
+changeData(data: any) {
+  this.dataSource.next(data);
+}
+
+Acomp.component.ts` add these imports SharedService.
+
+Subscribe the observable data from the service inside the NgOnInit function.
+
+ngOnInit() {
+  this.sharedData.currentData.subscribe(data => this.data = data);
+}
+
+Add a function to change the shared data then emit to its subscriber then navigate to the other component to see the data changes.
+
+changeData() {
+  this.sharedData.changeData({name: 'Eric Cantona'});
+  this.router.navigate(['/bcomp']);
+}
+
+Do a similar way for the other component, bcomp.component.ts
